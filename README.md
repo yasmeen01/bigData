@@ -1,10 +1,10 @@
-# *****************************************************  Membres de l'equipe **************************************************************** #
+# ************************  Membres de l'equipe ********************************************** #
 
-  # ELhadj Mamadou BAH
-  # Yasmine
-  # Tiana
+# ELhadj Mamadou BAH
+# Yasmine
+# Tiana
 
-# *****************************************************  Introduction ************************************************************************ #
+# *********************  Introduction ************************************** #
 
 Nous avons decide de mener une etude sur un fichier que nous avons scincer en 4 data sets. 
 
