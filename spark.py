@@ -32,6 +32,15 @@ for f in os.listdir(path): #marche comme un ls, ici le f représerente mes fichi
         # cpt=df.count()
         # pour=nb/cpt
         # pour*100
+        
+        
+        #################### ELhadj ###################################
+
+        #Taux de chommage par etat en pourcentage 
+        taux_Chomage_par_Etat = df.groupBy("state").agg({"stateur" : "max"})
+        #taux_Chomage_par_Etat.collect()
+        
+        #################### ELhadj ###################################
 
         #comparaison nb H vs F
         # res.repartition(1).write.csv("./data/result/sex"+name)
