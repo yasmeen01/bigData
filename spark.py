@@ -93,24 +93,140 @@ for f in os.listdir(path): #marche comme un ls, ici le f représerente mes fichi
 
         #################### ELhadj ###################################
 
-        #Taux de chommage par etat en pourcentage 
-        taux_Chomage_par_Etat = df.groupBy("state").agg({"stateur" : "max"})
-        #taux_Chomage_par_Etat.collect()
-        
+      
+# j ai remarque que lors de notre presentation on 
+# tombera facilement dans un travail d amateur si nous
+# traitons pas les donnes avant de les visualiser
+# j ai effectuer un cas d etudes sur le premier mois 
+# data1.csv et on pourra nien evidement le generaliser
+# grace a la fonction de traitement de tous les .csv
+#
+# Vous me direz apres ce que vous en penser merci !!!!!
+#
+#
+
+# Chargement de module
+#%matplotlib inline
+#import pandas as pd
+#import numpy as np
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+
+df = pd.read_csv('./data/donnees/data1.csv')
+#Avant la suppression de colonnes unitiles
+df.head()
+
+#Vérification la structure globale du jeu de données 
+df.shape
+# output: (1001, 22)
+
+ ## # Suppressions de Colonnes Unitilse a la visualisation #####
+# Selon moi les colonne ci-dessous ne porte pas d'interet 
+# majeur a notre etude c est pour cela que j ai procede a une 
+# suppression (drop) 
+
+#suppression de la colonne nwhite
+df.drop(['nwhite'], axis =1, inplace = True)
+#suppression de la colonne dykids
+df.drop(['dykids'], axis =1, inplace = True)
+#suppression de la colonne rr
+df.drop(['rr'], axis =1, inplace = True)
+#suppression de la colonne ui
+df.drop(['ui'], axis =1, inplace = True)
+#suppression de la colonne bluecol
+df.drop(['bluecol'], axis =1, inplace = True)
+#suppression de la colonne derivatives
+df.drop(['derivatives'], axis =1, inplace = True)
+#suppression de la colonne Sharpe
+df.drop(['Sharpe'], axis =1, inplace = True)
+#suppression de la colonne smsa
+df.drop(['smsa'], axis =1, inplace = True)
+#suppression de la colonne statemb
+df.drop(['statemb'], axis =1, inplace = True)
+#suppression de la colonne portfolio
+df.drop(['portfolio'], axis =1, inplace = True)
+
+#nouveau Data frame apres la suppression de colonnes unitiles
+
+df.head()
+
+#apres un .shape
+df.shape
+# output: (1001, 11)
+
+### S'assurer qu il n y a pas de doublons dans les data set
+df.duplicated().sum()
+
+# verification et (modification) des valeurs manquantes
+df.isnull().sum()
+#                output
+#	stateur      0
+#	state        0
+#	age          0
+#	tenure       0
+#	joblost      0
+#	school12     0
+#	sex          0
+#	married      0
+#	dkids        0
+#	yrdispl      0
+#	insurance    0
+#	dtype: int64
+# Ce qui permet de confirmer qu il n y  aucune valeur manquante dans les donnees. 
+
+# une Description des Valeur a visualiser
+df.describe()
+
+# Verification du type de donnees
+df.info()
+
+#exportation du fichier nettoyer
+df.to_csv('./data/donnees/data1_clean.csv')
+
+#Chargement des donnees
+#Attention a charger la donnees netoyee
+df = pd.read_csv('./data/donnees/data1_clean.csv')
+df.head()
+# ou
+df.tail() # fin de la liste
+######## VIZ ####
+#Un diagramme circulaire de la
+#visualisation de l age 
+df["age"].value_counts(normalize=True).plot(kind='pie')
+
+#visualisation des taux de chomage 
+df["stateur"].value_counts(normalize=True).plot(kind='pie')
+
+#visualisation par rapport au sex
+df["sex"].value_counts(normalize=True).plot(kind='pie')
+
+#Matrice de Correlation
+#entre les différentes variables quantitatives de votre DataFrame
+sns.heatmap(df.corr())
+
+# En rajoutant les arguments annot=True et cmap='Greens
+sns.heatmap(df.corr(), annot=True, cmap='Greens')
+plt.title("Nouvelle Matrice de corrélation\n", fontsize=18, color='#009432')
+
+#  Ici, nous cherchons juste à obtenir l age moyen dans chaque state, 
+
+# d abord
+ageMoyen = df[['age','state']].groupby('state').mean().round().sort_values(by='age', ascending=False)
+ageMoyen.reset_index(0, inplace=True)
+ageMoyen.head()
+
+#Ensuite 
+plt.figure(figsize=(12,7))
+sns.barplot(x=ageMoyen['state'], y=ageMoyen['age'], palette="Blues_r")
+plt.xlabel('\nLes State (ETATS)', fontsize=14, color='#2980b9')
+plt.ylabel('L Age moyen \n', fontsize=15, color='#e55039')
+plt.title("L Age moyen par State dans le Premier Mois\n", fontsize=15, color='#e55039')
+plt.xticks(rotation= 75)
+plt.tight_layout()
+
+# Plein d autre fonction pourrons y etre ajouter bien evidement 
+
         #################### ELhadj ###################################
-
-
-
-
-
-##############Stockage résultat dans des fichiers.csv (dans dossier result)#############################
-        # res.repartition(1).write.csv("./data/result/sex"+name)
-        # abolished.write.csv("./data/result/abolished_"+name)  #enregistrer les fichiers résultant
-
-
-
-
-
 
 
 ######################## VISUALISATION #########################################
