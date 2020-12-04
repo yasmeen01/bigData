@@ -104,7 +104,7 @@ for f in os.listdir(path): #marche comme un ls, ici le f représerente mes fichi
             nbchildO.append(childO)
             #dans le fichiers les states sont représenter en code postale
             #je voudrais afficher dans le graphe les noms des states et non les codes postaux
-            df2 = spark.read.format('csv').options(header=True, inferSchema=True).load("../state.csv")
+            df2 = spark.read.format('csv').options(header=True, inferSchema=True).load("state.csv")
             dic=[]
             dic= df2.toPandas().set_index('state').T.to_dict('list')
             cmpt=0
@@ -163,11 +163,6 @@ if __name__ == '__main__':
     plt.show() 
 
 
-    #taux chomage par state (en %) par an
-    sttes=['Louisiana','Montana','Vermont','Utah','Illinois','Maryland','Texas','Missouri','Warren','Kansas']
-    plt.pie(listeState, labels=sttes, autopct='%1.1f%%',shadow=True, startangle=90)
-    plt.title("Top 10 des states avec un taux de chomage le plus élevé (en %) ")
-    plt.show()
 
     #Postes abolis (en %) par an
     plt.pie(abolshd, labels=x1, autopct='%1.1f%%',shadow=True, startangle=90)
