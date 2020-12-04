@@ -46,7 +46,7 @@ for f in os.listdir(path): #marche comme un ls, ici le f représerente mes fichi
     if len(s[len(s)-1]) != 0:
         if (re.search(r,pathname)): #on vérifie que c'est bien un fichier .csv que g récupérer
             df = spark.read.format('csv').options(header=True, inferSchema=True).load(pathname) #loader les données
-            os.system("cp "+pathname+" ../data/finished/"+name) #copier les fichiers qui ont était traité dans un dossier finished
+            os.system("cp "+pathname+"data/finished/"+name) #copier les fichiers qui ont était traité dans un dossier finished
                 #calculer le pourcentage des employée de plus de 30ans
             nb=df.filter("age < 30").select(['age']).count()
             cpt=df.count()
@@ -130,7 +130,7 @@ for f in os.listdir(path): #marche comme un ls, ici le f représerente mes fichi
 
     ##############Stockage résultat dans des fichiers.csv (dans dossier result)#############################
             # res.repartition(1).write.csv("./data/result/sex"+name)
-            # reason.write.csv("../data/result/reason_chomage_"+name)  #enregistrer les fichiers résultant
+            # reason.write.csv("data/result/reason_chomage_"+name)  #enregistrer les fichiers résultant
 
 
 
