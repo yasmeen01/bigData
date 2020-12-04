@@ -63,8 +63,8 @@ exemple: data1.csv represente la liste des personnes ayant perdu leur emploi dan
 
 21	Sharpe: the sharpe ratio of the best portfolio --> le ratio sharpe du meilleur portefeuille
 
-# Fonctions réalisées:
-I- Etudes des corélations des columns
+# ÉTUDES réalisées:
+I- Corrélations des columns
 
 II-Etudes approfondie sur les ouvriers en chomage
 
