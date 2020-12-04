@@ -65,10 +65,13 @@ exemple: data1.csv represente la liste des personnes ayant perdu leur emploi dan
 
 # Fonctions réalisées:
 I- Etudes des corélations des columns
+
 II-Etudes approfondie sur les ouvriers en chomage
+
 III-Etudes comparatives des states
 
 # Outils utilisés:
 1-PySpark notebook
+
 2-Pour la visualisation: Pandas, matplotlib
 
