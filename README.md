@@ -1,7 +1,7 @@
 # ***Membres de l'equipe***
 
 #ELhadj Mamadou BAH
-#Yasmine
+#Yasmine SMAILI
 #Tiana
 
 # ***Introduction***
@@ -19,7 +19,7 @@ Chaque data set (.csv) representera a lui seul un nombre de personnes ayant perd
 exemple: data1.csv represente la liste des personnes ayant perdu leur emploi dans le premier Mois.
 
 
-# Details des noms et fonctions des attributs des Data Sets
+# Details des noms et signification des attributs des Data Sets
 
 1	Statemb: state maximum benefit level      --> indiquer le niveau maximal des prestations 
 
@@ -62,4 +62,13 @@ exemple: data1.csv represente la liste des personnes ayant perdu leur emploi dan
 20	life insurance : has a life insurance --> a une assurance-vie
 
 21	Sharpe: the sharpe ratio of the best portfolio --> le ratio sharpe du meilleur portefeuille
+
+# Fonctions réalisées:
+I- Etudes des corélations des columns
+II-Etudes approfondie sur les ouvriers en chomage
+III-Etudes comparatives des states
+
+# Outils utilisés:
+1-PySpark notebook
+2-Pour la visualisation: Pandas, matplotlib
 
